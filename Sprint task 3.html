@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div style="display: flex;">
+            <p>Введите сумму:</p>
+            <p style="margin-left: 130px;">KZT (tenge)</p>
+            <p style="margin-left: 100px;">USD (dollar)</p>
+            <p style="margin-left: 100px;">EUR (euro)</p>
+        </div>
+
+        <div>
+            <input type="number" class="sum">
+            <select class="currency">
+                <option selected>KZT</option>
+                <option>USD</option>
+                <option>EUR</option>
+            </select>
+            <input class="kzt" disabled>
+            <input class="usd" disabled>
+            <input class="eur" disabled>
+        </div>
+    </div>
+
+    <script>
+        let sum = document.querySelector(".sum")
+        let kzt = document.querySelector(".kzt")
+        let usd = document.querySelector(".usd")
+        let eur = document.querySelector(".eur")
+        let currency = document.querySelector(".currency")
+
+        sum.addEventListener('input', calc)
+        
+        function calc() {
+            switch (currency.value) {
+                case "KZT":
+                    kzt.value = "-"
+                    usd.value = sum.value / 447.75
+                    eur.value = sum.value / 488.11
+                    break;
+                case "USD":
+                    kzt.value = sum.value * 447.75
+                    usd.value = "-"
+                    eur.value = sum.value * 0.92
+                    break;
+                case "EUR":
+                    kzt.value = sum.value * 488.22
+                    usd.value = sum.value / 0.92
+                    eur.value = "-"
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
